@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:960368278472:android:cd03717e84ed188ad55efd",
+        "mobilesdk_app_id": "1:960368278472:android:18fbf57f674619edd55efd",
         "android_client_info": {
-          "package_name": "com.geekyfi"
+          "package_name": "com.geekynaved.geekyfi"
         }
       },
       "oauth_client": [
