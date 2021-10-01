@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Geekyfi",
-    "slug": "Geekyfi",
+    "name": "geekyfi",
+    "slug": "geekyfi",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
