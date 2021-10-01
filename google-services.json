@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "960368278472",
+    "firebase_url": "https://geekyfi-b0a06-default-rtdb.firebaseio.com",
+    "project_id": "geekyfi-b0a06",
+    "storage_bucket": "geekyfi-b0a06.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:960368278472:android:cd03717e84ed188ad55efd",
+        "android_client_info": {
+          "package_name": "com.geekyfi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "960368278472-9996lrmngj8pt54j12khdetgsr33uf84.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAizAIiXzMEtVO2xempynCvQInmrxQxLIE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "960368278472-9996lrmngj8pt54j12khdetgsr33uf84.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
