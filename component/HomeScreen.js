@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, FlatList, Text, StatusBar } from 'react-native';
-import { List, Card, Button, Searchbar } from 'react-native-paper';
+import { StyleSheet, FlatList, StatusBar } from 'react-native';
+import { List, Card, Searchbar } from 'react-native-paper';
 import { ScrollView } from 'react-native-gesture-handler';
-import {
-  AdMobBanner, AdMobInterstitial
-} from 'expo-ads-admob';
+import { AdMobBanner } from 'expo-ads-admob';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function HomeScreen({ navigation }) {
@@ -75,7 +73,7 @@ export default function HomeScreen({ navigation }) {
     },
     {
       id: '10',
-      title: 'Express Js Frameworke',
+      title: 'Express Js Framework',
       link1: 'https://youtu.be/AX1AP83CuK4',
       link2: 'https://youtu.be/L72fhGm1tfE'
     },
@@ -88,7 +86,7 @@ export default function HomeScreen({ navigation }) {
   ]
   const ItemView = ({ item }) => {
     return (
-      <Card key={item.id} style={styles.qnsbtn} onPress={() => {
+      <Card key={item.id} style={styles.courseCard} onPress={() => {
         navigation.navigate('LinksScreen', {
           hindi: `${item.link1}`,
           english: `${item.link2}`,
@@ -121,7 +119,7 @@ export default function HomeScreen({ navigation }) {
       <StatusBar />
       <ScrollView style={{ marginBottom: 60 }}>
         <Searchbar
-          style={{ marginHorizontal: 23, marginTop: 20, borderRadius: 30 }}
+          style={styles.searchBar}
           placeholder="Search"
           value={search}
           onChangeText={(text) => searchFilter(text)}
@@ -134,7 +132,7 @@ export default function HomeScreen({ navigation }) {
 
       </ScrollView>
       <AdMobBanner
-        style={styles.bottomBanner}
+        style={styles.bottomAdBanner}
         bannerSize="fullBanner"
         adUnitID="ca-app-pub-3940256099942544/6300978111" // Test ID, Replace with your-admob-unit-id
         servePersonalizedAds // true or false
@@ -144,7 +142,7 @@ export default function HomeScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  qnsbtn: {
+  courseCard: {
     marginTop: 20,
     marginBottom: 10,
     marginHorizontal: 25,
@@ -153,16 +151,18 @@ const styles = StyleSheet.create({
     color: '#fff',
     elevation: 4
   },
-  bottomBanner: {
+  searchBar: {
+    marginHorizontal: 23,
+    marginTop: 20,
+    borderRadius: 30
+  },
+  bottomAdBanner: {
     position: "absolute",
     bottom: 0
   },
   interstitialBanner: {
     width: "100%",
     marginLeft: 0
-  },
-  itemStyle: {
-    padding: 15
   }
 })
 
