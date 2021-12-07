@@ -38,7 +38,7 @@ export default function HomeScreen({ navigation }) {
     },
     {
       id: '3',
-      title: 'HTML course',
+      title: 'HTML',
       link1: 'https://youtu.be/BsDoLVMnmZs',
       link2: 'https://youtu.be/UB1O30fR-EE'
     },
