@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, FlatList, StatusBar, View, Text, TouchableOpacity, TextInput, LogBox } from 'react-native';
+import { StyleSheet, FlatList, StatusBar, View, Text, TouchableOpacity, TextInput, LogBox, Dimensions } from 'react-native';
 import { List, Card } from 'react-native-paper';
 import { ScrollView } from 'react-native-gesture-handler';
 import { AdMobBanner } from 'expo-ads-admob';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import AnimatedLottieView from 'lottie-react-native';
 
 export default function HomeScreen({ navigation }) {
   const [course, setCourse] = useState([]);
+  const [loading, setLoading] = useState(true)
+
   useEffect(() => {
     LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
     fetchCourse();
@@ -16,6 +19,7 @@ export default function HomeScreen({ navigation }) {
     response.json()
       .then((data) => {
         setCourse(data)
+        setLoading(false)
       }).catch((err) => console.log(err));
   }
   const ItemView = ({ item }) => {
@@ -37,7 +41,9 @@ export default function HomeScreen({ navigation }) {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <StatusBar />
-      <ScrollView style={{ marginBottom: 60 }}>
+      {/* Add this in scrollview when you are placing ads
+      style={{ marginBottom: 60 }} */}
+      <ScrollView>
         <View style={styles.header}>
           <Text style={styles.appName}>Geeks Cord</Text>
           <TouchableOpacity activeOpacity={1} onPress={() => navigation.navigate('SearchScreen', course)}>
@@ -51,25 +57,41 @@ export default function HomeScreen({ navigation }) {
             </View>
           </TouchableOpacity>
         </View>
-        
-        <FlatList
-          data={course}
-          keyExtractor={item => item.id}
-          renderItem={ItemView}
-        />
+
+        {loading ?
+          <AnimatedLottieView
+            source={require("../assets/32527-blue-cycle.json")}
+            style={styles.animatedLoader}
+            autoPlay loop
+          />
+          :
+          <FlatList
+            data={course}
+            keyExtractor={item => item.id}
+            renderItem={ItemView}
+          />
+        }
 
       </ScrollView>
-      <AdMobBanner
+      {/* for Ad */}
+      {/* <AdMobBanner
         style={styles.bottomAdBanner}
         bannerSize="fullBanner"
         adUnitID="ca-app-pub-3940256099942544/6300978111" // Test ID, Replace with your-admob-unit-id
         servePersonalizedAds // true or false
-      />
+      /> */}
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  animatedLoader: {
+    display: 'flex',
+    height: Dimensions.get('window').height * 0.5,
+    marginTop: 50,
+    justifyContent: 'center',
+    alignSelf: 'center'
+  },
   courseCard: {
     marginTop: 20,
     marginBottom: 10,
@@ -104,10 +126,6 @@ const styles = StyleSheet.create({
   bottomAdBanner: {
     position: "absolute",
     bottom: 0
-  },
-  interstitialBanner: {
-    width: "100%",
-    marginLeft: 0
   }
 })
 
