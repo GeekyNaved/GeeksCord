@@ -52,7 +52,7 @@ export default function SearchScreen({ route, navigation, }) {
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <StatusBar />
-            <ScrollView style={{ marginBottom: 60 }}>
+            <ScrollView >
                 <View style={styles.header}>
                     <AntDesign name="arrowleft" size={28} color="white" onPress={() => navigation.goBack()} />
                     <Searchbar
@@ -69,12 +69,12 @@ export default function SearchScreen({ route, navigation, }) {
                 />
 
             </ScrollView>
-            <AdMobBanner
+            {/* <AdMobBanner
                 style={styles.bottomAdBanner}
                 bannerSize="fullBanner"
                 adUnitID="ca-app-pub-3940256099942544/6300978111" // Test ID, Replace with your-admob-unit-id
                 servePersonalizedAds // true or false
-            />
+            /> */}
         </SafeAreaView>
     );
 }
@@ -104,10 +104,6 @@ const styles = StyleSheet.create({
     bottomAdBanner: {
         position: "absolute",
         bottom: 0
-    },
-    interstitialBanner: {
-        width: "100%",
-        marginLeft: 0
     }
 })
 
